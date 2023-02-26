@@ -10,25 +10,25 @@ pygame.init()
 # create the screen
 screen = pygame.display.set_mode((800, 600))
 
-# Background
+# adding Background
 background = pygame.image.load('background.png')
 
-# Sound
+# adding Sound
 mixer.music.load("background.wav")
 mixer.music.play(-1)
 
-# Caption and Icon
+# Title and Icon
 pygame.display.set_caption("Space Fighter")
 icon = pygame.image.load('ufo.png')
 pygame.display.set_icon(icon)
 
-# Player
+# add Player
 playerImg = pygame.image.load('player.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
 
-# Enemy
+# add Enemy
 enemyImg = []
 enemyX = []
 enemyY = []
@@ -43,7 +43,7 @@ for i in range(num_of_enemies):
     enemyX_change.append(5)
     enemyY_change.append(30)
 
-# Bullet
+# add Bullet
 
 # Ready - You can't see the bullet on the screen
 # Fire - The bullet is currently moving
@@ -55,7 +55,7 @@ bulletX_change = 0
 bulletY_change = 10
 bullet_state = "ready"
 
-# Score
+# add Score
 
 score_value = 0
 font = pygame.font.Font('freesansbold.ttf', 32)
@@ -63,7 +63,7 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 textX = 10
 testY = 10
 
-# Game Over
+# Game Over loop
 over_font = pygame.font.Font('freesansbold.ttf', 64)
 
 
@@ -99,7 +99,7 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
         return False
 
 
-# Game Loop
+# Main Game Loop
 running = True
 while running:
 
@@ -111,7 +111,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        # if keystroke is pressed check whether its right or left
+        # if keystroke is pressed checking whether its right or left
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 playerX_change = -4
@@ -121,16 +121,13 @@ while running:
                 if bullet_state is "ready":
                     bulletSound = mixer.Sound("laser.wav")
                     bulletSound.play()
-                    # Get the current x cordinate of the spaceship
+                    # Get the current x cordinate of the space ship
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
-
-    # 5 = 5 + -0.1 -> 5 = 5 - 0.1
-    # 5 = 5 + 0.1
 
     playerX += playerX_change
     if playerX <= 0:
