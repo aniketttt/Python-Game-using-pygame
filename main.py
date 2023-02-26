@@ -10,25 +10,25 @@ pygame.init()
 # create the screen
 screen = pygame.display.set_mode((800, 600))
 
-# Background
+# adding Background
 background = pygame.image.load('background.png')
 
-# Sound
+# adding Sound
 mixer.music.load("background.wav")
 mixer.music.play(-1)
 
-# Caption and Icon
+# adding title and icon
 pygame.display.set_caption("Space Fighter")
 icon = pygame.image.load('ufo.png')
 pygame.display.set_icon(icon)
 
-# Player
+# adding Player
 playerImg = pygame.image.load('player.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
 
-# Enemy
+# adding Enemy
 enemyImg = []
 enemyX = []
 enemyY = []
@@ -43,7 +43,7 @@ for i in range(num_of_enemies):
     enemyX_change.append(5)
     enemyY_change.append(30)
 
-# Bullet
+# adding Bullet
 
 # Ready - You can't see the bullet on the screen
 # Fire - The bullet is currently moving
@@ -55,7 +55,7 @@ bulletX_change = 0
 bulletY_change = 10
 bullet_state = "ready"
 
-# Score
+# adding Score
 
 score_value = 0
 font = pygame.font.Font('freesansbold.ttf', 32)
@@ -105,13 +105,13 @@ while running:
 
     # RGB = Red, Green, Blue
     screen.fill((0, 0, 0))
-    # Background Image
+    # calling Background Image
     screen.blit(background, (0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-        # if keystroke is pressed check whether its right or left
+        # if keystroke is pressed checking whether its right or left
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 playerX_change = -4
@@ -129,19 +129,17 @@ while running:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
 
-    # 5 = 5 + -0.1 -> 5 = 5 - 0.1
-    # 5 = 5 + 0.1
-
+    
     playerX += playerX_change
     if playerX <= 0:
         playerX = 0
     elif playerX >= 736:
         playerX = 736
 
-    # Enemy Movement
+    # adding Enemy Movement
     for i in range(num_of_enemies):
 
-        # Game Over
+        # Game Over loop
         if enemyY[i] > 440:
             for j in range(num_of_enemies):
                 enemyY[j] = 2000
@@ -156,7 +154,7 @@ while running:
             enemyX_change[i] = -2
             enemyY[i] += enemyY_change[i]
 
-        # Collision
+        # Collision loop
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
             explosionSound = mixer.Sound("explosion.wav")
