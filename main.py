@@ -17,18 +17,30 @@ background = pygame.image.load('background.png')
 mixer.music.load("background.wav")
 mixer.music.play(-1)
 
+<<<<<<< HEAD
 # adding title and icon
+=======
+# Title and Icon
+>>>>>>> 7ab23a3c07248b038ecbb8618bf116fd906a56ef
 pygame.display.set_caption("Space Fighter")
 icon = pygame.image.load('ufo.png')
 pygame.display.set_icon(icon)
 
+<<<<<<< HEAD
 # adding Player
+=======
+# add Player
+>>>>>>> 7ab23a3c07248b038ecbb8618bf116fd906a56ef
 playerImg = pygame.image.load('player.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
 
+<<<<<<< HEAD
 # adding Enemy
+=======
+# add Enemy
+>>>>>>> 7ab23a3c07248b038ecbb8618bf116fd906a56ef
 enemyImg = []
 enemyX = []
 enemyY = []
@@ -43,7 +55,11 @@ for i in range(num_of_enemies):
     enemyX_change.append(5)
     enemyY_change.append(30)
 
+<<<<<<< HEAD
 # adding Bullet
+=======
+# add Bullet
+>>>>>>> 7ab23a3c07248b038ecbb8618bf116fd906a56ef
 
 # Ready - You can't see the bullet on the screen
 # Fire - The bullet is currently moving
@@ -55,7 +71,11 @@ bulletX_change = 0
 bulletY_change = 10
 bullet_state = "ready"
 
+<<<<<<< HEAD
 # adding Score
+=======
+# add Score
+>>>>>>> 7ab23a3c07248b038ecbb8618bf116fd906a56ef
 
 score_value = 0
 font = pygame.font.Font('freesansbold.ttf', 32)
@@ -63,7 +83,7 @@ font = pygame.font.Font('freesansbold.ttf', 32)
 textX = 10
 testY = 10
 
-# Game Over
+# Game Over loop
 over_font = pygame.font.Font('freesansbold.ttf', 64)
 
 
@@ -99,7 +119,7 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
         return False
 
 
-# Game Loop
+# Main Game Loop
 running = True
 while running:
 
@@ -121,7 +141,7 @@ while running:
                 if bullet_state is "ready":
                     bulletSound = mixer.Sound("laser.wav")
                     bulletSound.play()
-                    # Get the current x cordinate of the spaceship
+                    # Get the current x cordinate of the space ship
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
 
@@ -129,7 +149,10 @@ while running:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> 7ab23a3c07248b038ecbb8618bf116fd906a56ef
     playerX += playerX_change
     if playerX <= 0:
         playerX = 0
