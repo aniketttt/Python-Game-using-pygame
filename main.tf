@@ -33,6 +33,9 @@ resource "aws_instance" "example" {
   tags = {
     Name = "ExampleInstance"
   }
+  metadata_options {
+    http_tokens = "required"
+  }
 }
 
 # Output the public IP address of the created instance
